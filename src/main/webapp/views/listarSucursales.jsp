@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.List" %>
+<%@ page import="models.Sucursal" %>
+
 <!DOCTYPE html>
 <html>
-<head>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,6 +18,33 @@
 <body>
 	<div class="container mt-5">
 		<h2>Listado de Sucursales</h2>
+		<div class="row">
+			<%
+			List<Sucursal> listaSucursal = (List<Sucursal>) request.getAttribute("sucursales");
+			if (listaSucursal != null && !listaSucursal.isEmpty()) {
+				for (Sucursal sucursal : listaSucursal) {
+			%>
+				<div class="col-md-4 mt-4">
+                    <div class="card">
+                        <img class="card-img-top" src="<%= sucursal.getImagenUrl() %>" alt="Imagen del restaurante">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= sucursal.getNombre() %></h5>
+                            <p class="card-text"><%= sucursal.getDireccion() %></p>
+                            <!--  a href="sucursales/reservas/ sucursal.getId() " class="btn btn-primary">Hacer Reserva</a-->
+                        </div>
+                    </div>	
+                </div>
+			<%
+				}
+			} else {
+			%>
+			<div class="col">
+				<p>No se encontraron restaurantes.</p>
+			</div>
+			<%
+			}
+			%>
+		</div>
 	</div>
 	
 	<script
