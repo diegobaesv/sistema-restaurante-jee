@@ -13,7 +13,7 @@ import models.Sucursal;
 public class SucursalDaoImpl implements SucursalDao {
 
 	@Override
-	public List<Sucursal> listar() {
+	public List<Sucursal> listarSucursales() {
 		Connection cn = null;
 		List<Sucursal> sucursales = null;
 		try {
@@ -45,6 +45,44 @@ public class SucursalDaoImpl implements SucursalDao {
 		}
 
 		return sucursales;
+	}
+
+	
+
+	@Override
+	public Sucursal obtenerSucursal(Integer id) {
+		Connection cn = null;
+		Sucursal sucursal = null;
+		try {
+			cn = DatabaseAccess.getConnection();
+			String sql = "SELECT id_sucursal, nombre, direccion, imagen_url, telefono, correo, dias_atencion, horario_atencion, latitud, longitud FROM sucursales WHERE estado_auditoria = '1' AND id_sucursal = ?";
+			
+			PreparedStatement pstm = cn.prepareStatement(sql);
+			pstm.setInt(1, id);
+			
+			ResultSet rs = pstm.executeQuery();
+			
+			if(rs.next()) {
+				sucursal = resultSetToObject(rs);
+			}
+			
+			rs.close();
+			pstm.close();
+			
+		} catch(Exception e){
+			System.out.println(e);
+			sucursal = null;
+		} finally {
+			try {
+				if(cn != null) {
+					cn.close();
+				}
+			} catch (Exception e2) {
+				System.out.println(e2);
+			}
+		}
+
+		return sucursal;
 	}
 	
 	private Sucursal resultSetToObject(ResultSet rs) throws Exception {

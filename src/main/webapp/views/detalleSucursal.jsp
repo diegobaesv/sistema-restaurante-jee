@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="models.Sucursal" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,13 +23,16 @@
 </style>
 <body>
 	<div class="container mt-5">
-		<h2>Detalle de sucursal $nombre</h2>
-		<img class="imagen-cabecera" src="https://dfmas.df.cl/dfmas/site/artic/20220922/imag/foto_0000002020220922191520/Copia_de_Hyatt_Centric_Lima-050407.jpg">
+	<% 
+		Sucursal sucursal = (Sucursal) request.getAttribute("sucursal");  
+    %>
+		<h2>Detalle de sucursal <%= sucursal.getNombre() %></h2>
+		<img class="imagen-cabecera" src="<%= sucursal.getImagenUrl() %>">
 		<div class="mt-4">
-			<p class="mb-2"><b>Direccion:</b> $direccion</p>
-			<p class="mb-2"><b>Whatsappp:</b> $telefono</p>
-			<p class="mb-2"><b>Correo:</b> $correo</p>
-			<p class="mb-2"><b>Horario:</b> Martes a Domingo<br>12 p.m. a 12 a.m.</p>
+			<p class="mb-2"><b>Direccion:</b> <%= sucursal.getDireccion() %></p>
+			<p class="mb-2"><b>Whatsappp:</b> <%= sucursal.getTelefono() %></p>
+			<p class="mb-2"><b>Correo:</b> <%= sucursal.getCorreo() %></p>
+			<p class="mb-2"><b>Horario:</b> <%=  sucursal.getDiasAtencion() %><br><%=  sucursal.getHorarioAtencion() %></p>
 		</div>
 	</div>
 	

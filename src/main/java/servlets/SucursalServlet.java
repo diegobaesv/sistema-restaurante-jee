@@ -33,7 +33,7 @@ public class SucursalServlet extends HttpServlet {
 		System.out.println("pathInfo: "+pathInfo);
 		
 		if(pathInfo == null) {
-			List<Sucursal> sucursales = sucursalDao.listar();
+			List<Sucursal> sucursales = sucursalDao.listarSucursales();
 			
 			request.setAttribute("sucursales", sucursales);
 			
@@ -42,6 +42,10 @@ public class SucursalServlet extends HttpServlet {
 		} else {
 			String id = Util.extractDataFromPath(pathInfo, 1);
 			System.out.println("id: "+id);
+			
+			Sucursal sucursal = sucursalDao.obtenerSucursal(Integer.parseInt(id));
+			request.setAttribute("sucursal", sucursal);
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/views/detalleSucursal.jsp");
 			dispatcher.forward(request, response);
 		}

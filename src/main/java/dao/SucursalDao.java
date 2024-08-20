@@ -5,5 +5,6 @@ import java.util.List;
 import models.Sucursal;
 
 public interface SucursalDao {
-	public List<Sucursal> listar();
+	public List<Sucursal> listarSucursales();
+	public Sucursal obtenerSucursal(Integer id);
 }
