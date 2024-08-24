@@ -24,6 +24,9 @@
 </style>
 <body>
 	<div class="container mt-5">
+	<a href="../sucursales-listar" class="btn btn-primary">Ir a Lista</a>
+	
+	
 	<% 
 		Sucursal sucursal = (Sucursal) request.getAttribute("sucursal");  
     %>
@@ -43,8 +46,7 @@
 				scrolling="no" 
 				marginheight="0" 
 				marginwidth="0" 
-				src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=<%=sucursal.getLatitud()%>,<%=sucursal.getLongitud()%>+(Restaurante)&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
-					<a href="https://www.gps.ie/">gps vehicle tracker</a>
+				src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=<%=sucursal.getLatitud()%>,<%=sucursal.getLongitud()%>+(Restaurante)&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">					
 			</iframe>
 		</div>
 	</div>

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="models.Sucursal" %>
 
@@ -23,6 +23,9 @@
 </style>
 <body>
 	<div class="container mt-5">
+		<a href="/sistema-restaurante-jee" class="btn btn-primary">Ir a Inicio</a>
+		<a href="sucursales-registrar" class="btn btn-info">Registrar Sucursal</a>
+	
 		<h2>Listado de Sucursales</h2>
 		<div class="row">
 			<%
@@ -31,7 +34,7 @@
 				for (Sucursal sucursal : listaSucursal) {
 			%>
 				<div class="col-md-4 mt-4">
-					<a href="/sistema-restaurante-jee/sucursales/<%=sucursal.getIdSucursal()%>">
+					<a href="sucursales-detalle/<%=sucursal.getIdSucursal()%>">
 						<div class="card">
 	                        <img class="card-img-top" src="<%= sucursal.getImagenUrl() %>" alt="Imagen del restaurante">
 	                        <div class="card-body">
