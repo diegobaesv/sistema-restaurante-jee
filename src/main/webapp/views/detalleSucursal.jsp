@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="models.Sucursal" %>
+<%@ page import="utils.Util" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +31,7 @@
 		<img class="imagen-cabecera" src="<%= sucursal.getImagenUrl() %>">
 		<div class="mt-4">
 			<p class="mb-2"><b>Direccion:</b> <%= sucursal.getDireccion() %></p>
-			<p class="mb-2"><b>Whatsappp:</b> <%= sucursal.getTelefono() %></p>
+			<p class="mb-2"><b>Whatsappp:</b> <a href="https://wa.me/51<%=sucursal.getTelefono()%>?text=<%=Util.encodedTextToUrl("Hola, quiero hacer una reserva para la sucursal "+sucursal.getNombre())%>"><%= sucursal.getTelefono() %></a></p>
 			<p class="mb-2"><b>Correo:</b> <%= sucursal.getCorreo() %></p>
 			<p class="mb-2"><b>Horario:</b> <%=  sucursal.getDiasAtencion() %><br><%=  sucursal.getHorarioAtencion() %></p>
 		</div>
