@@ -9,14 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.SucursalDao;
+import dao.impl.SucursalDaoImpl;
 import models.Sucursal;
 
 @WebServlet("/sucursales-registrar")
 public class SucursalRegistrarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	SucursalDao sucursalDao;
        
     public SucursalRegistrarServlet() {
         super();
+        sucursalDao = new SucursalDaoImpl();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,7 +39,9 @@ public class SucursalRegistrarServlet extends HttpServlet {
 		sucursal.setDiasAtencion(request.getParameter("diasAtencion"));
 		sucursal.setHorarioAtencion(request.getParameter("horarioAtencion"));
 		sucursal.setLatitud(request.getParameter("latitud"));
-		sucursal.setLongitud(request.getParameter("longitud"));		
+		sucursal.setLongitud(request.getParameter("longitud"));
+		
+		sucursalDao.insertarSucursal(sucursal);
 		
 		response.sendRedirect(request.getContextPath()+"/sucursales-listar");
 	}

@@ -28,20 +28,20 @@
 	            <input type="text" class="form-control" id="direccion" name="direccion" required>
         	</div>
         	<div class="form-group mb-3">
-	            <label for="telefono">Teléfono</label>
-	            <input type="text" class="form-control" id="telefono" name="telefono" required>
+	            <label for="telefono">Teléfono (Opcional)</label>
+	            <input type="text" class="form-control" id="telefono" name="telefono">
         	</div>
         	<div class="form-group mb-3">
-	            <label for="correo">Correo</label>
-	            <input type="text" class="form-control" id="correo" name="correo" required>
+	            <label for="correo">Correo (Opcional)</label>
+	            <input type="text" class="form-control" id="correo" name="correo">
         	</div>
         	<div class="form-group mb-3">
-	            <label for="diasAtencion">Días de Atencion</label>
-	            <input type="text" class="form-control" id="diasAtencion" name="diasAtencion" required>
+	            <label for="diasAtencion">Días de Atencion (Opcional)</label>
+	            <input type="text" class="form-control" id="diasAtencion" name="diasAtencion">
         	</div>
         	<div class="form-group mb-3">
-	            <label for="horarioAtencion">Horario de Atención</label>
-	            <input type="text" class="form-control" id="horarioAtencion" name="horarioAtencion" required>
+	            <label for="horarioAtencion">Horario de Atención (Opcional)</label>
+	            <input type="text" class="form-control" id="horarioAtencion" name="horarioAtencion">
         	</div>
         	<div class="form-group mb-3">
 	            <label for="latitud">Latitud</label>
@@ -52,8 +52,8 @@
 	            <input type="text" class="form-control" id="longitud" name="longitud" required>
         	</div>
         	<div class="form-group mb-3">
-	            <label for="imagenUrl">Link de la imagen de portada</label>
-	            <input type="text" class="form-control" id="imagenUrl" name="imagenUrl" required>
+	            <label for="imagenUrl">Link de la imagen de portada (Opcional)</label>
+	            <input type="text" class="form-control" id="imagenUrl" name="imagenUrl">
         	</div>
         	<button type="submit" class="mt-3 btn btn-primary">Registrar</button>
 		</form>
