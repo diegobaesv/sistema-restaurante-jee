@@ -51,6 +51,10 @@
 	            <label for="longitud">Longitud</label>
 	            <input type="text" class="form-control" id="longitud" name="longitud" required>
         	</div>
+        	<div class="form-group mb-3">
+	            <label for="imagenUrl">Link de la imagen de portada</label>
+	            <input type="text" class="form-control" id="imagenUrl" name="imagenUrl" required>
+        	</div>
         	<button type="submit" class="mt-3 btn btn-primary">Registrar</button>
 		</form>
 	</div>

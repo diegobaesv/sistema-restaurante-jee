@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.Sucursal;
+
 @WebServlet("/sucursales-registrar")
 public class SucursalRegistrarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -23,8 +25,16 @@ public class SucursalRegistrarServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nombre = request.getParameter("nombre");
-		System.out.println("nombre:"+nombre);
+		Sucursal sucursal = new Sucursal();
+		sucursal.setNombre(request.getParameter("nombre"));
+		sucursal.setDireccion(request.getParameter("direccion"));
+		sucursal.setImagenUrl(request.getParameter("imagenUrl"));
+		sucursal.setTelefono(request.getParameter("telefono"));
+		sucursal.setCorreo(request.getParameter("correo"));
+		sucursal.setDiasAtencion(request.getParameter("diasAtencion"));
+		sucursal.setHorarioAtencion(request.getParameter("horarioAtencion"));
+		sucursal.setLatitud(request.getParameter("latitud"));
+		sucursal.setLongitud(request.getParameter("longitud"));		
 		
 		response.sendRedirect(request.getContextPath()+"/sucursales-listar");
 	}

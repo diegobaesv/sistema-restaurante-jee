@@ -85,6 +85,43 @@ public class SucursalDaoImpl implements SucursalDao {
 		return sucursal;
 	}
 	
+	@Override
+	public void insertarSucursal(Sucursal sucursal) {
+		Connection cn = null;
+		try {
+			cn = DatabaseAccess.getConnection();
+			cn.setAutoCommit(false);
+			String sql = "INSERT INTO sucursales (nombre, direccion, imagen_url, telefono, correo, dias_atencion, horario_atencion, latitud, longitud) VALUES (?,?,?,?,?,?,?,?,?)";
+			
+			PreparedStatement pstm = cn.prepareStatement(sql);
+			pstm.setString(1, sucursal.getNombre());
+			pstm.setString(2, sucursal.getDireccion());
+			pstm.setString(3, sucursal.getImagenUrl());
+			pstm.setString(4, sucursal.getTelefono());
+			pstm.setString(5, sucursal.getCorreo());
+			pstm.setString(6, sucursal.getDiasAtencion());
+			pstm.setString(7, sucursal.getHorarioAtencion());
+			pstm.setString(8, sucursal.getLatitud());
+			pstm.setString(9, sucursal.getLongitud());
+			
+			pstm.executeUpdate();
+			cn.commit();
+			
+			pstm.close();
+			
+		} catch(Exception e){
+			System.out.println(e);
+		} finally {
+			try {
+				if(cn != null) {
+					cn.close();
+				}
+			} catch (Exception e2) {
+				System.out.println(e2);
+			}
+		}
+	}
+	
 	private Sucursal resultSetToObject(ResultSet rs) throws Exception {
 		Sucursal sucursal = new Sucursal();
 		sucursal.setIdSucursal(rs.getInt("id_sucursal"));
@@ -99,7 +136,6 @@ public class SucursalDaoImpl implements SucursalDao {
 		sucursal.setLongitud(rs.getString("longitud"));
 		return sucursal;
 	}
-	
-	
+
 
 }
